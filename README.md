@@ -44,7 +44,7 @@ A robust, scalable microservice backend built with Node.js, Express, MongoDB, an
 - **Security**: Helmet, CORS, Rate Limiting
 - **Background Jobs**: node-cron
 
-## 📦 Installation
+## Installation
 
 1. **Clone the repository**
    ```bash
@@ -136,46 +136,7 @@ Authorization: Bearer <your-jwt-token>
 - **USER**: Can manage cart, place orders, view own orders
 - **ADMIN**: Full access to all resources, can manage products and orders
 
-## Data Models
-
-### User
-```javascript
-{
-  name: String,
-  email: String (unique),
-  password: String (hashed),
-  role: 'USER' | 'ADMIN'
-}
-```
-
-### Product
-```javascript
-{
-  name: String,
-  price: Number,
-  description: String,
-  stock: Number,
-  reservedStock: Number,
-  availableStock: Number (virtual)
-}
-```
-
-### Order
-```javascript
-{
-  userId: ObjectId,
-  items: [{
-    productId: ObjectId,
-    quantity: Number,
-    priceAtPurchase: Number
-  }],
-  totalAmount: Number,
-  status: 'PENDING_PAYMENT' | 'PAID' | 'SHIPPED' | 'DELIVERED' | 'CANCELLED',
-  paymentExpiresAt: Date
-}
-```
-
-## 🔄 Order State Management
+## Order State Management
 
 The order lifecycle follows these transitions:
 
@@ -269,15 +230,6 @@ curl -X POST http://localhost:3000/api/orders/checkout \
 - Redis-based job queue
 - Automatic retry on failure
 - Job cleanup and monitoring
-
-## Postman Collection
-
-A comprehensive Postman collection is included with:
-- All API endpoints
-- Authentication flows
-- Complete order workflow
-- Error scenarios
-- Admin operations
 
 
 
